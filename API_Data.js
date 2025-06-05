@@ -1,20 +1,16 @@
-export {test}
-let url =
-  "https://www.amiiboapi.com/api/amiibo/?name=mario&showusage";
+import { selected_value } from "./User_Inter.js";
+export {characters}
+let url = "https://www.amiiboapi.com/api/amiibo/?name=mario&showusage";
 
-function urlChoice(name){
-    url = `https://www.amiiboapi.com/api/amiibo/?name=${name}&showusage`
+function urlChoice(name) {
+  url = `https://www.amiiboapi.com/api/amiibo/?name=${name}&showusage`;
 }
-async function getAmiibo() {
-  try {
-    const response = await fetch(url);
-    const result = await response.text();
-    console.log(result);
-  } catch (error) {
-    console.error(error);
-  }
-}
-let test = 'link'
-urlChoice('donkey kong')
 
-// getAmiibo()
+urlChoice(selected_value);
+
+fetch(url)
+  .then((response) => response.json())
+  .then((data) => {
+    let characters = data.amiibo.map((item) => item.character);
+    console.log(characters);
+  });
