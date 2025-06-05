@@ -1,12 +1,17 @@
-import { characters } from "./API_Data.js"
-export {selected_value}
-let Characters = document.getElementById('characters')
+export function displayCharacterInfo(characters) {
+  const infoDiv = document.getElementById("info");
+  infoDiv.innerHTML = ""; // clear previous
 
-let selected_value = document.querySelector('select').value
-function con(){
-    selected_value = document.querySelector('select').value
-    console.log(selected_value)
+  if (characters.length === 0) {
+    infoDiv.innerText = "No characters found.";
+    return;
+  }
+
+  const first = characters[0];
+  const infoHTML = `
+    <p><strong>Name:</strong> ${first.character}</p>
+    <p><strong>Game Series:</strong> ${first.gameSeries}</p>
+    <img src="${first.image}" alt="${first.character}" width="100" />
+  `;
+  infoDiv.innerHTML = infoHTML;
 }
-Characters.addEventListener('change',con)
-console.log(selected_value)
-console.log(characters)
