@@ -1,3 +1,11 @@
 #centering{
     text-align: center;
 }
+#info{
+    text-align: center;
+
+}
+.amiibo:nth-child(odd){
+    background-color: red;
+    color: white;
+}

@@ -1,17 +1,15 @@
 export function displayCharacterInfo(characters) {
-  const infoDiv = document.getElementById("info");
+  let infoDiv = document.getElementById("info");
   infoDiv.innerHTML = ""; // clear previous
-
-  if (characters.length === 0) {
-    infoDiv.innerText = "No characters found.";
-    return;
+  let info = ''
+  for (let i = 0; i<characters.length;i++){
+  let character = characters[i];
+   info += `<div class = 'amiibo'>
+    <p><strong>Name:</strong> ${character.character}</p>
+    <p><strong>Game Series:</strong> ${character.gameSeries}</p>
+    <img src="${character.image}" alt="${character.character}" width="100" />
+    </div>
+    `;
+  infoDiv.innerHTML = info;
   }
-
-  const first = characters[0];
-  const infoHTML = `
-    <p><strong>Name:</strong> ${first.character}</p>
-    <p><strong>Game Series:</strong> ${first.gameSeries}</p>
-    <img src="${first.image}" alt="${first.character}" width="100" />
-  `;
-  infoDiv.innerHTML = infoHTML;
 }
